@@ -50,8 +50,9 @@ def plot_counting(y_achsenabschnitt=0.0):
     ax.plot(x_vals, y_vals, color='royalblue', label=f'Grenze bei {y_achsenabschnitt:.2f} kg')
 
     # Bereich einfärben
-    ax.fill_between(x_vals, y_vals, 12, color='lightblue', alpha=1, label='kategorisiert als Katze')
+    
     ax.fill_between(x_vals, y_vals, 42, where=(y_vals < 42), color='navajowhite', alpha=1, label='kategorisiert als Hund')
+    ax.fill_between(x_vals, y_vals, 12, color='lightblue', alpha=1, label='kategorisiert als Katze')
 
     ax.set_xlim(10, 68)
     ax.set_ylim(12, 42)
