@@ -12,7 +12,7 @@ cat_weights = [30, 20, 15, 25, 30]
 dog_heights = [18, 30, 35, 60, 45]
 dog_weights = [37, 27, 35, 30, 38]
 
-# ✅ Lade Bilder EINMAL als Arrays (schnell und wiederverwendbar)
+# Lade Bilder EINMAL als Arrays (schnell und wiederverwendbar)
 cat_img_arr = mpimg.imread('Grafiken/cathead.png')
 cat_img_grey_arr = mpimg.imread('Grafiken/cathead_grey.png')
 dog_img_arr = mpimg.imread('Grafiken/doghead.png')
@@ -68,8 +68,18 @@ def plot_counting(y_achsenabschnitt=0.0):
 if 'randomY' not in st.session_state:
     st.session_state.randomY = random.uniform(10, 50)
 
-# Interaktiver Slider in Streamlit
-y_achsenabschnitt = st.slider('Entscheidungsgrenze in kg', min_value=10.0, max_value=50.0, step=0.05, value=st.session_state.randomY)
+# Erstelle zwei Spalten: links für den Slider, rechts für das Diagramm
+col1, col2 = st.columns([1, 3])  # Seitenverhältnis: 1 Teil Slider, 3 Teile Plot
 
-# Diagramm rendern
-plot_counting(y_achsenabschnitt)
+with col1:
+    y_achsenabschnitt = st.slider(
+        'Grenze für Gewicht (kg)', 
+        min_value=10.0, 
+        max_value=50.0, 
+        step=0.05, 
+        value=st.session_state.randomY
+    )
+
+with col2:
+    fig = plot_counting(y_achsenabschnitt)
+    st.pyplot(fig)
