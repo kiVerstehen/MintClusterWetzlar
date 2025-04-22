@@ -86,7 +86,7 @@ col1, col2 = st.columns([1, 3])  # Seitenverhältnis: 1 Teil Slider, 3 Teile Plo
 with col1:
     steigung = st.slider('Steigung', min_value=-1.0, max_value=1.0, step=0.05, value=st.session_state.randomS)
     y_achsenabschnitt = st.slider(
-        'Grenze für Gewicht (kg)', 
+        'y-Achsenabschnitt', 
         min_value=10.0, 
         max_value=50.0, 
         step=0.05, 
@@ -94,6 +94,6 @@ with col1:
     )
 
 with col2:
-    fig = plot_counting(steigung, y_achsenabschnitt)
-    st.pyplot(fig)
+    plot_counting(steigung, y_achsenabschnitt)
+    #st.pyplot(fig)
 

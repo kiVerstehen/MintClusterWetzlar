@@ -81,5 +81,5 @@ with col1:
     )
 
 with col2:
-    fig = plot_counting(y_achsenabschnitt)
-    st.pyplot(fig)
+    plot_counting(y_achsenabschnitt)
+    
